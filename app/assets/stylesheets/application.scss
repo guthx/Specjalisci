@@ -14,3 +14,20 @@
  *= require_self
  */
 @import "bootstrap";
+
+.active {
+  background-color: lightblue;
+}
+
+.specialist:hover {
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.transitOption {
+  display: inline-block;
+}
+
+.transitOption:hover {
+  cursor: pointer;
+}

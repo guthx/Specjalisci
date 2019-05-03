@@ -76,6 +76,7 @@ $(document).ready(function(){
      $('#map').css({
        display: 'block'
      });
+     $('#transitOptions').show();
    });
 
    $('.transitOption').click(function(){
