@@ -1,0 +1,9 @@
+<script src="<%= asset_path 'home.js' %>"></script>
+<%= form_tag('/specialists/find', method: :get) %>
+<input id="pac-input" class="controls" type="text" placeholder="Wybierz swoje miejsce zamieszkania"><br/>
+<%= select_tag "specialty_id", options_for_select(Specialty.all.order(:name).collect { |b| [ b.name, b.id ] }) %> <br/>
+<div style="display:none;">
+  <%= text_field_tag 'coordx' %>
+  <%= text_field_tag 'coordy' %>
+</div>
+<%= submit_tag 'Znajdź' %>

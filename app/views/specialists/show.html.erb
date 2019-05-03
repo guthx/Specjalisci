@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @specialist.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @specialist.last_name %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @specialist.company_name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @specialist.city %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @specialist.street %>
+</p>
+
+<p>
+  <strong>Coordx:</strong>
+  <%= @specialist.coordx %>
+</p>
+
+<p>
+  <strong>Coordy:</strong>
+  <%= @specialist.coordy %>
+</p>
+
+<p>
+  <strong>Specialty:</strong>
+  <%= @specialist.specialty_id %>
+</p>
+
+<%= link_to 'Edit', edit_specialist_path(@specialist) %> |
+<%= link_to 'Back', specialists_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: MyString
+  street: MyString
+  coordx: 1.5
+  coordy: 1.5
+
+two:
+  city: MyString
+  street: MyString
+  coordx: 1.5
+  coordy: 1.5
