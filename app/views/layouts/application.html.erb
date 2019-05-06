@@ -15,12 +15,12 @@
 	<div class="container">
 	<ul class="navbar-nav text-uppercase ml-auto">
 	<% if user_signed_in? %>
-      <div id="currentUser">Zalogowany jako <%= current_user.first_name %> <%= current_user.last_name %></div>
-	  <li>
+      <li class="nav-item"> <div id="currentUser">Zalogowany jako <%= current_user.first_name %> <%= current_user.last_name %></div> </li>
+	  <li class="nav-item">
       <%= link_to 'Wyloguj', destroy_user_session_path, method: :delete %>
       </li>
 	  <% if current_user.specialist == nil %>
-	  <li>
+	  <li class="nav-item">
       <%= link_to 'Zareklamuj swoją działalność', new_specialist_path %>
       </li>
 	  <% end %>
@@ -28,7 +28,7 @@
 	  <li>
       <%= link_to 'Zarejestruj', new_user_registration_path %>
       </li>
-	  <li>
+	  <li class="nav-item">
 	  <%= link_to 'Zaloguj', new_user_session_path %>
       </li>
 	  <% end %>
