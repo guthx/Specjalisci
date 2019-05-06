@@ -10,7 +10,7 @@
 		<input id="pac-input" class="controls" type="text" placeholder="Wybierz swoje miejsce zamieszkania" value="<%= current_user.city %>, <%= current_user.address %>"><br/>
 		<% end %>
 	</div>
-	<div class=""col-sm-4">
+	<div class="col-sm-4">
 		<%= select_tag "specialty_id", options_for_select(Specialty.all.order(:name).collect { |b| [ b.name, b.id ] }) %> <br/>
 		<div style="display:none;">
 		  <%= text_field_tag 'coordx' %>
