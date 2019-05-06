@@ -15,6 +15,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @specialistID = params[:specialist_id]
+    @userID = params[:user_id]
+    session[:return_to] ||= request.referer
   end
 
   # GET /reviews/1/edit
@@ -28,7 +31,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to session.delete(:return_to) }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.fetch(:review, {})
+      params.require(:review).permit(:rating, :text, :specialist_id, :user_id)
     end
 end

@@ -25,7 +25,9 @@ $(document).ready(function(){
             console.log('Error:', status);
         } else {
             distance = response.rows[0].elements[0].distance.value;
-            $('#lista').append("<li class='specialist' distance=" + distance + " coordx=" + obj.coordx + " coordy=" + obj.coordy + ">" + "Imie: " + obj.first_name + "<br>Nazwisko: " + obj.last_name + "<br>Dystans: " + distance + "<br></li>");
+            distanceText = response.rows[0].elements[0].distance.text;
+            $('#lista').append("<li class='specialist' distance=" + distance + " coordx=" + obj.coordx + " coordy=" + obj.coordy + " id=" + obj.id + ">" + "<div class='first_name'>Imie: " + obj.first_name + "</div><div class='last_name'>Nazwisko: " + obj.last_name + "</div><div class='location'><div class='address'>Lokacja: " + obj.city + ", " + obj.street + "</div><div class='distance'>" + distanceText + "</div></div>"
+            + "<div class='rating'><div class='star-ratings-sprite'><span style='width:" + (obj.rating / 5.0)*100 + "%' class='star-ratings-sprite-rating'></span></div></div>" + "<br></li>");
             if(distance > maxDistance){
               $('#lista').children().last().css({
                 display: "none"
@@ -72,11 +74,13 @@ $(document).ready(function(){
      $('#drawRoute').click(function(){
        draw_route(endpoint, travelMode);
      });
-     $('#drawRoute').show();
-     $('#map').css({
+     $('#specialistDetails').css({
        display: 'block'
      });
-     $('#transitOptions').show();
+     $('#specialistID').html($(this).attr('id'));
+     link = '<a href="/reviews/new?specialist_id=' + $('#specialistID').html() + "&user_id=" + $('#currentUserID').html()  + '">Wystaw recenzję</a>';
+     $('#giveReview').html(link);
+     displayReviews($('#specialistID').html());
    });
 
    $('.transitOption').click(function(){
@@ -139,4 +143,17 @@ function draw_route(endpoint, travelMode){
       }
   });
 
+}
+
+
+function displayReviews(specialistID){
+  $('#reviews').html('');
+  var url = specialistID+"/getReviews.json"
+  $.getJSON(url, function(json){
+    $.each(json, function(i, obj){
+      $('#reviews').append('<div class="review"><div class="reviewerName">' + obj.userName + "</div>"
+      + "<div class='rating'><div class='star-ratings-sprite'><span style='width:" + (obj.rating / 5.0)*100 + "%' class='star-ratings-sprite-rating'></span></div></div>"
+      + "<div class='reviewText'>" + obj.text + "</div></div>");
+    });
+  });
 }

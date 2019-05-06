@@ -71,10 +71,21 @@ class SpecialistsController < ApplicationController
     specialists = Specialist.where(specialty_id: params[:id])
     info = []
     specialists.each do |specialist|
-      info << {first_name: specialist.first_name, last_name: specialist.last_name, coordx: specialist.coordx, coordy: specialist.coordy}
+      info << {first_name: specialist.first_name, last_name: specialist.last_name, coordx: specialist.coordx, coordy: specialist.coordy, id: specialist.id, city: specialist.city, street: specialist.street, rating: specialist.rating}
     end
     respond_to do |format|
       format.json { render json: info }
+    end
+  end
+
+  def getReviews
+    specialist = Specialist.find(params[:id])
+    reviews = []
+    specialist.reviews.each do |review|
+      reviews << {rating: review.rating, text: review.text, userName: review.user.full_name}
+    end
+    respond_to do |format|
+      format.json { render json: reviews }
     end
   end
 

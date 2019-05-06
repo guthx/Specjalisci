@@ -4,4 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_one :specialist
+  has_many :reviews
+
+  def full_name
+    return self.first_name + " " + self.last_name
+  end
 end

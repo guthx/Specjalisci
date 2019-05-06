@@ -11,6 +11,28 @@
     </div>
   <% end %>
 
+  <div class="field">
+      <div id="full-stars-example">
+      <div class="rating-group">
+          <label aria-label="1 star" class="rating__label" for="rating-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="review[rating]" id="rating-1" value="1" type="radio">
+          <label aria-label="2 stars" class="rating__label" for="rating-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="review[rating]" id="rating-2" value="2" type="radio">
+          <label aria-label="3 stars" class="rating__label" for="rating-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="review[rating]" id="rating-3" value="3" type="radio" checked>
+          <label aria-label="4 stars" class="rating__label" for="rating-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="review[rating]" id="rating-4" value="4" type="radio">
+          <label aria-label="5 stars" class="rating__label" for="rating-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="review[rating]" id="rating-5" value="5" type="radio">
+      </div>
+  </div>
+  </div>
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_area :text %>
+  </div>
+  <%= form.hidden_field :specialist_id, :value => @specialistID %>
+  <%= form.hidden_field :user_id, :value => @userID %>
   <div class="actions">
     <%= form.submit %>
   </div>
