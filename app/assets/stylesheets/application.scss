@@ -174,9 +174,20 @@ li.nav-item a:hover {
 	padding: 7px 10px;
 }
 
+input[type="submit"]:hover {
+	font-size: 18px;
+	padding: 7px 35px;
+	background-color: #fec810 !important;
+}
+
 input[type="submit"] {
 	font-size: 18px;
-	padding: 4px 30px;
+	padding: 7px 35px;
+	background-color: #feaf10 !important;
+	border: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 600;
 }
 
 /*** wyszukani ***/
