@@ -159,10 +159,15 @@ input[type="submit"] {
 
 /*** wyszukani ***/
 
+#lista {
+	padding: 0px;
+}
+
 #lista li.specialist {
 	padding: 10px 15px;
 	max-width: 500px;
 	background: #f0f0f0;
+	display: block;
 }
 
 .rating {
