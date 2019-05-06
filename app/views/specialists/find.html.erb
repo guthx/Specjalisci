@@ -5,24 +5,32 @@
   <div id="coordy"><%= @coordy %></div>
   <div id="specialty_id"><%= @specialty_id %></div>
 </div>
-<ul id="lista">
-</ul>
-<input id="distanceSlider" type="range" name="distance" min="1" max="50" value="5">
-<div id="maxDistance">5 km</div>
-<div id="specialistID" style="display:none;"></div>
-<div id="specialistDetails" style="display:none;">
-  <div id="map" style="width:500px;height:500px;max-width:100%; max-height:100%;"></div>
-  <button id="drawRoute">Wyznacz trasę do lokalizacji specjalisty</button>
-  <div id="transitOptions">
-    <div id="transitDriving" class="transitOption active">Samochod</div>
-    <div id="transitWalking" class="transitOption">Piechota</div>
-  </div>
-  <div id="timeOfTransit"></div>
-  <% if user_signed_in? %>
-  <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
-  <div id="giveReview"></div>
-  <div id="reviews"></div>
-  <% end %>
+<div class="row">
+	<div class="col-sm-5">
+	<ul id="lista">
+	</ul>
+	</div>
+	<div class="col-sm-7">
+	<input id="distanceSlider" type="range" name="distance" min="1" max="50" value="5">
+	<div id="maxDistance">5 km</div>
+	<div id="specialistID" style="display:none;"></div>
+	<div id="specialistDetails" style="display:none;">
+	  <div id="map" style="width:500px;height:500px;max-width:100%; max-height:100%;"></div>
+	  <div class="box-trasa">
+	  <button id="drawRoute">Wyznacz trasę do lokalizacji specjalisty</button>
+	  <div id="transitOptions">
+		<div id="transitDriving" class="transitOption active">Samochod</div>
+		<div id="transitWalking" class="transitOption">Piechota</div>
+	  </div>
+	  <div id="timeOfTransit"></div>
+	  </div>
+	  <% if user_signed_in? %>
+	  <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
+	  <div id="giveReview" class="przycisnik"></div>
+	  <div id="reviews"></div>
+	  <% end %>
+	</div>
+	</div>
 </div>
 </div>
 

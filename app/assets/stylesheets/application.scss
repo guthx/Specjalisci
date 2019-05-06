@@ -174,13 +174,13 @@ li.nav-item a:hover {
 	padding: 7px 10px;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, .przycisnik a:hover {
 	font-size: 18px;
 	padding: 7px 35px;
 	background-color: #fec810 !important;
 }
 
-input[type="submit"] {
+input[type="submit"], .przycisnik a{
 	font-size: 18px;
 	padding: 7px 35px;
 	background-color: #feaf10 !important;
