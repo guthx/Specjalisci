@@ -7,20 +7,22 @@
 </div>
 <div class="row">
 	<div class="col-sm-5">
+	<input id="distanceSlider" type="range" name="distance" min="1" max="50" value="5">
+	<div id="maxDistance">5 km</div>
 	<ul id="lista">
 	</ul>
 	</div>
 	<div class="col-sm-7">
-	<input id="distanceSlider" type="range" name="distance" min="1" max="50" value="5">
-	<div id="maxDistance">5 km</div>
 	<div id="specialistID" style="display:none;"></div>
 	<div id="specialistDetails" style="display:none;">
 	  <div id="map" style="width:500px;height:500px;max-width:100%; max-height:100%;"></div>
-	  <div class="box-trasa">
+	  <div class="box-trasa row">
+	  <div class="col-sm-6">
 	  <button id="drawRoute">Wyznacz trasę do lokalizacji specjalisty</button>
-	  <div id="transitOptions">
-		<div id="transitDriving" class="transitOption active">Samochod</div>
-		<div id="transitWalking" class="transitOption">Piechota</div>
+	  </div>
+	  <div id="transitOptions" class="col-sm-6">
+		<div id="transitDriving" class="transitOption active"><i class="fas fa-car-alt"></i></div>
+		<div id="transitWalking" class="transitOption"><i class="fas fa-shoe-prints"></div>
 	  </div>
 	  <div id="timeOfTransit"></div>
 	  </div>
