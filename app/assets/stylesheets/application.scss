@@ -15,10 +15,6 @@
  */
 @import "bootstrap";
 
-.active {
-  background-color: lightblue;
-}
-
 .specialist:hover {
   background-color: lightblue;
   cursor: pointer;
@@ -214,6 +210,23 @@ input[type="submit"], .przycisnik a{
 
 #drawRoute {
 	padding: 5px 10px;
+}
+
+.fas.fa-car-alt, .fas.fa-shoe-prints {
+	font-size: 35px;
+	padding: 0 10px;
+}
+
+.transitOption {
+	border: 1px solid #c8c8c8;
+}
+
+.active {
+	background-color: #f0f0f0;
+}
+
+#reviews {
+	margin: 20px 0;
 }
 
 /** register i login ***/
