@@ -168,6 +168,7 @@ input[type="submit"] {
 	max-width: 500px;
 	background: #f0f0f0;
 	display: block;
+	margin-bottom: 10px;
 }
 
 .rating {
@@ -193,4 +194,8 @@ input[type="submit"] {
 .actions {
 	text-align: center;
 	padding: 20px 0 0 10px;
+}
+
+#user_remember_me {
+	width: auto;
 }
