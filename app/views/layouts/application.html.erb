@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <nav id="topBar"><% if user_signed_in? %>
+      <div id="currentUser">Zalogowany jako <%= current_user.first_name %> <%= current_user.last_name %></div>
+      <%= link_to 'Wyloguj', destroy_user_session_path, method: :delete %>
+      <% if current_user.specialist == nil %>
+      <%= link_to 'Zareklamuj swoją działalność', new_specialist_path %>
+      <% end %>
+      <% else %>
+      <%= link_to 'Zarejestruj', new_user_registration_path %>
+      <%= link_to 'Zaloguj', new_user_session_path %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, :value => current_user.first_name, :readonly => true %>
   </div>
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, :value => current_user.last_name, :readonly => true %>
   </div>
 
   <div class="field">
@@ -52,6 +52,7 @@
     <%= form.label :specialty_id %>
     <%= form.select :specialty_id, Specialty.all.order(:name).collect { |b| [ b.name, b.id ] } %> <br/>
   </div>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
 
   <div id="map" style="width:500px;height:500px;max-width:100%; max-height:100%;"></div>
 
