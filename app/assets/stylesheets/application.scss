@@ -147,7 +147,7 @@
 }
 
 #specialty_id {
-	min-width: 100%px;
+	width: 100%;
 	font-size: 18px;
 	padding: 7px 10px;
 }
@@ -155,4 +155,16 @@
 input[type="submit"] {
 	font-size: 18px;
 	padding: 4px 30px;
+}
+
+/ *** wyszukani ***/
+
+#lista-wyszukanych li.specialist {
+	padding: 10px 15px;
+	max-width: 500px;
+	background: #f0f0f0;
+}
+
+.rating {
+	padding: 10px 0 0 0;
 }
