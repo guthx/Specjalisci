@@ -36,6 +36,9 @@ class SpecialistsController < ApplicationController
       if @specialist.save
         format.html { redirect_to @specialist, notice: 'Specialist was successfully created.' }
         format.json { render :show, status: :created, location: @specialist }
+        if @specialist.confirmed == false
+          UserMailer.confirm(@specialist).deliver_now
+        end
       else
         format.html { render :new }
         format.json { render json: @specialist.errors, status: :unprocessable_entity }

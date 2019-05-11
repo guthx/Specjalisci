@@ -1,0 +1,12 @@
+<p>
+  Korzystając z tego adresu e-mail zarejestrowano nową działalność.
+</p>
+<p>
+  Imię i nazwisko: <%= @specialist.full_name %> <br>
+  Rodzaj działalności: <%= @specialist.specialty.name %> <br>
+  Adres: <%= @specialist.city %>, <%= @specialist.street %> <br>
+</p>
+<p>
+  Aby potwierdzić działalność i umożliwić jej wyszukanie na stronie, kliknij w poniższy link: <br>
+  <%= link_to 'Potwierdź działalność', confirm_specialist_path(id: @specialist.id, confirmation_code: @specialist_confirmation_code) %>
+</p>
