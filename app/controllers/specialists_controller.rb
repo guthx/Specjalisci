@@ -25,7 +25,13 @@ class SpecialistsController < ApplicationController
   # POST /specialists.json
   def create
     @specialist = Specialist.new(specialist_params)
-
+    if @specialist.email == current_user.email
+      @specialist.confirmation_code = nil
+      @specialist.confirmed = true
+    else
+      @specialist.confirmation_code = SecureRandom.base64(10)
+      @specialist.confirmed = false
+    end
     respond_to do |format|
       if @specialist.save
         format.html { redirect_to @specialist, notice: 'Specialist was successfully created.' }
@@ -68,7 +74,7 @@ class SpecialistsController < ApplicationController
   end
 
   def findJSON
-    specialists = Specialist.where(specialty_id: params[:id])
+    specialists = Specialist.where(specialty_id: params[:id]).where(confirmed: true)
     info = []
     specialists.each do |specialist|
       info << {first_name: specialist.first_name, last_name: specialist.last_name, coordx: specialist.coordx, coordy: specialist.coordy, id: specialist.id, city: specialist.city, street: specialist.street, rating: specialist.rating}
@@ -89,6 +95,17 @@ class SpecialistsController < ApplicationController
     end
   end
 
+  def confirm
+    specialist = Specialist.find(params[:id])
+    if (specialist.confirmation_code == params[:confirmation_code]) && (specialist.confirmed == false)
+      specialist.confirmed = true
+      specialist.save
+    else
+      redirect_to '/link_expired'
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_specialist
@@ -97,6 +114,6 @@ class SpecialistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def specialist_params
-      params.require(:specialist).permit(:first_name, :last_name, :company_name, :city, :street, :coordx, :coordy, :specialty_id, :user_id)
+      params.require(:specialist).permit(:first_name, :last_name, :company_name, :city, :street, :coordx, :coordy, :specialty_id, :user_id, :phone, :email, :additional_info)
     end
 end

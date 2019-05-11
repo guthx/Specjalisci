@@ -6,4 +6,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :city, :address])
   end
+
+  def link_expired
+  end
 end

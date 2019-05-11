@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_140036) do
+ActiveRecord::Schema.define(version: 2019_05_11_163027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_05_11_140036) do
     t.string "email"
     t.string "phone"
     t.string "additional_info"
+    t.boolean "confirmed", default: false
+    t.string "confirmation_code"
     t.index ["specialty_id"], name: "index_specialists_on_specialty_id"
     t.index ["user_id"], name: "index_specialists_on_user_id"
   end

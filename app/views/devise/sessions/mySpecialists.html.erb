@@ -1,0 +1,27 @@
+<div class="my-specialists">
+<% if !current_user.specialists.exists? %>
+<div class="notice">Nie posiadasz zarejestrowanych działalności</div>
+<% else %>
+<div>Moje działalności</div>
+<% current_user.specialists.each do |specialist| %>
+  <div class='my-specialist'>
+    <div class="specialty"><%= specialist.specialty.name %></div>
+    <div class="address"><%= specialist.city %>, <%= specialist.street %></div>
+    <div class='rating'>
+      <div class='star-ratings-sprite'>
+        <span style='width:<%= (specialist.rating / 5.0)*100 %>%' class='star-ratings-sprite-rating'></span>
+      </div>
+    </div>
+    <div class='review-count'>Recenzji: <%= specialist.reviews.count %></div>
+    <% if specialist.confirmed == false %>
+    <div class='warning'>Działalność niepotwierdzona</div>
+    <% end %>
+  </div>
+<% end %>
+<% end %>
+</div>
+
+<div id="new-specialist">
+  <div><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
+  <div><%= link_to 'Dodaj cudzą działalność', new_specialist_path %></div>
+</div>

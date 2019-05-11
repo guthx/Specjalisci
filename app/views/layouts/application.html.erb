@@ -19,11 +19,9 @@
 	  <li class="nav-item">
       <%= link_to 'Wyloguj', destroy_user_session_path, method: :delete %>
       </li>
-	  <% if current_user.specialist == nil %>
 	  <li class="nav-item">
-      <%= link_to 'Zareklamuj swoją działalność', new_specialist_path %>
-      </li>
-	  <% end %>
+      <%= link_to 'Moje działalności', mySpecialists_path %>
+    </li>
       <% else %>
 	  <li class="nav-item">
       <%= link_to 'Zarejestruj', new_user_registration_path %>
