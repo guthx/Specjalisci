@@ -8,5 +8,5 @@
 </p>
 <p>
   Aby potwierdzić działalność i umożliwić jej wyszukanie na stronie, kliknij w poniższy link: <br>
-  <%= link_to 'Potwierdź działalność', confirm_specialist_path(id: @specialist.id, confirmation_code: @specialist.confirmation_code) %>
+  <%= link_to 'Potwierdź działalność', confirm_specialist_url(id: @specialist.id, confirmation_code: @specialist.confirmation_code) %>
 </p>
