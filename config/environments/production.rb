@@ -34,7 +34,7 @@ Rails.application.configure do
   :port                 => 587,
   :enable_starttls_auto => true,
   :authentication       => :plain,
-  :domain               => "heroku.com"
+  :domain               => "specjalisci.com"
 }
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true

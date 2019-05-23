@@ -12,9 +12,14 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # GET /resource/confirmation?confirmation_token=abcdef
-  # def show
-  #   super
-  # end
+   def show
+     super
+     Specialist.where(email: self.resource.email).each do |specialist|
+       specialist.user_id = self.resource.id
+       specialist.confirmed = true
+       specialist.save
+     end
+   end
 
   # protected
 

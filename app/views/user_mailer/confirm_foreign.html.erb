@@ -1,0 +1,12 @@
+<p> Użytkownik serwisu Specjalisci zarejestrował Twoją działalność. </p>
+<p> Imię: <%= @specialist.first_name %><br/>
+    Nazwisko: <%= @specialist.last_name %><br/>
+    Adres: <%= @specialist.city %>, <%= @specialist.street %><br/>
+    Rodzaj: <%= @specialist.specialty.name %> </p>
+
+<p> Dzięki temu, Twoja działalność będzie mogła być reklamowana w serwisie za darmo, a inni użytkownicy będą mogli wystawiać opinie o Twojej działalności </p>
+<p> W chwili obecnej Twoja działalność nie została aktywowana, i nie jest widoczna dla innych użytkowników.
+  Jeżeli chcesz aktywować tę działalność, kliknij w poniższy link.
+  Będziesz mógł tam sprawdzić dokładne wprowadzone informacje, a także utworzyć konto, które pozwoli Ci na
+  edycję tych informacji oraz komunikację z potencjalnymi klientami. Po utworzeniu konta Twoja działalność zostanie automatycznie aktywowana. </p><br><br>
+<p> <%= link_to 'Potwierdź działalność', details_specialist_url(@specialist.id) %> </p>

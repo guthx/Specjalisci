@@ -15,6 +15,11 @@ class SpecialistsController < ApplicationController
   # GET /specialists/new
   def new
     @specialist = Specialist.new
+    if params[:foreign] == 'true'
+      @foreign = true
+    else
+      @foreign = false
+    end
   end
 
   # GET /specialists/1/edit
@@ -24,24 +29,46 @@ class SpecialistsController < ApplicationController
   # POST /specialists
   # POST /specialists.json
   def create
-    @specialist = Specialist.new(specialist_params)
-    if @specialist.email == current_user.email
-      @specialist.confirmation_code = nil
-      @specialist.confirmed = true
-    else
-      @specialist.confirmation_code = SecureRandom.base64(10)
-      @specialist.confirmed = false
-    end
-    respond_to do |format|
-      if @specialist.save
-        format.html { redirect_to @specialist, notice: 'Specialist was successfully created.' }
-        format.json { render :show, status: :created, location: @specialist }
-        if @specialist.confirmed == false
-          UserMailer.confirm(@specialist).deliver_now
-        end
+    if params[:foreign] == false
+      @specialist = Specialist.new(specialist_params)
+      if @specialist.email == current_user.email
+        @specialist.confirmation_code = nil
+        @specialist.confirmed = true
       else
-        format.html { render :new }
-        format.json { render json: @specialist.errors, status: :unprocessable_entity }
+        @specialist.confirmation_code = SecureRandom.base64(10)
+        @specialist.confirmed = false
+      end
+      respond_to do |format|
+        if @specialist.save
+          if @specialist.confirmed == false
+            UserMailer.confirm(@specialist).deliver_now
+            format.html { redirect_to '/specialist_created?confirmed=false' }
+          else
+            format.html { redirect_to '/specialist_created?confirmed=true' }
+          end
+        else
+          format.html { render :new }
+          format.json { render json: @specialist.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @specialist = Specialist.new(specialist_params)
+      if @specialist.email == current_user.email
+        flash[:error] = "Nie można dodać cudzej działalności pod własnym adresem e-mail!"
+        @foreign = true
+        render :new
+      else
+        @specialist.confirmation_code = SecureRandom.base64(10)
+        @specialist.confirmed = false
+        respond_to do |format|
+          if @specialist.save
+            UserMailer.confirm_foreign(@specialist).deliver_now
+            format.html { redirect_to '/specialist_created?confirmed=foreign' }
+          else
+            format.html { render :new }
+            format.json { render json: @specialist.errors, status: :unprocessable_entity }
+          end
+        end
       end
     end
   end
@@ -106,6 +133,10 @@ class SpecialistsController < ApplicationController
     else
       redirect_to '/link_expired'
     end
+  end
+
+  def details
+    @specialist = Specialist.find(params[:id])
   end
 
 

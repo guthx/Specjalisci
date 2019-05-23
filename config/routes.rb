@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+             :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations"}
   root 'home#index'
   resources :specialties, :reviews
   resources :specialists do
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get 'getReviews'
       get 'confirm'
+      get 'details'
     end
   end
 
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
     get 'mySpecialists', to: 'devise/sessions#mySpecialists'
   end
 
+  get '/awaitingConfirmation', to: 'home#awaitingConfirmation', as: :awaitingConfirmation
   get '/link_expired', to: 'home#link_expired', as: :link_expired
+  get '/specialist_created', to: 'home#specialist_created', as: :specialist_created
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'popper_js'
 gem 'bootstrap'
 gem 'devise'
+gem 'figaro'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

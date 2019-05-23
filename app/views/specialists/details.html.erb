@@ -1,0 +1,14 @@
+<h2> Szczegóły działalności </h2>
+Właściciel: <%= @specialist.first_name %> <%= @specialist.last_name %><br/>
+Adres: <%= @specialist.city %>, <%= @specialist.street %><br/>
+<% if @specialist.company_name != nil %>
+Nazwa firmy: <%= @specialist.company_name %><br/>
+<% end %>
+Specjalność: <%= @specialist.specialty.name %><br/>
+<% if @specialist.additional_info != nil %>
+Dodatkowe informacje: <%= @specialist.additional_info %><br/>
+<% end %>
+<br>
+<p> Twoja działalność nie jest jeszcze dostępna w serwisie. Aby ją potwierdzić, zarejestruj się swoim adresem e-mail korzystając z linku poniżej. </p>
+<p> Po rejestracji działalność stanie się dostępna w serwisie i będziesz mógł zmodyfikować jej informacje a także odbierać wiadomości od zainteresowanych klientów </p>
+<p> <%= link_to 'Zarejestruj się i potwierdź działalność', new_user_registration_path %> </p>
