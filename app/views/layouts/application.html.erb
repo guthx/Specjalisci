@@ -13,31 +13,36 @@
   <body>
     <nav id="topBar" class="navbar navbar-expand-lg navbar-dark fixed-top">
 	<div class="container">
-	<ul class="navbar-nav text-uppercase ml-auto">
-    <li class="nav-item">
-      <a href='/'>
-        <div class='logo'>
-        Specjalisci
-        </div>
-      </a>
-    <li>
-	<% if user_signed_in? %>
-      <li class="nav-item"> <div id="currentUser">Zalogowany jako <%= current_user.first_name %> <%= current_user.last_name %></div> </li>
-	  <li class="nav-item">
-      <%= link_to 'Wyloguj', destroy_user_session_path, method: :delete %>
-      </li>
-	  <li class="nav-item">
-      <%= link_to 'Moje działalności', mySpecialists_path %>
-    </li>
-      <% else %>
-	  <li class="nav-item">
-      <%= link_to 'Zarejestruj', new_user_registration_path %>
-      </li>
-	  <li class="nav-item">
-	  <%= link_to 'Zaloguj', new_user_session_path %>
-      </li>
-	  <% end %>
-	</ul>
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">
+				<div class='logo'>
+					Specjalisci
+				</div>
+			</a>
+		</div>
+		<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="navbar-collapse collapse" id="navbar-menu" style="">
+			<ul class="navbar-nav navbar-right text-uppercase ml-auto">
+			<% if user_signed_in? %>
+			  <li class="nav-item"> <div id="currentUser">Zalogowany jako <%= current_user.first_name %> <%= current_user.last_name %></div> </li>
+			  <li class="nav-item">
+			  <%= link_to 'Wyloguj', destroy_user_session_path, method: :delete %>
+			  </li>
+			  <li class="nav-item">
+			  <%= link_to 'Moje działalności', mySpecialists_path %>
+			</li>
+			  <% else %>
+			  <li class="nav-item">
+			  <%= link_to 'Zarejestruj', new_user_registration_path %>
+			  </li>
+			  <li class="nav-item">
+			  <%= link_to 'Zaloguj', new_user_session_path %>
+			  </li>
+			  <% end %>
+			</ul>
+		</div>
 	</div>
     </nav>
     <%= yield %>
