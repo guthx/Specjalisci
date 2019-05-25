@@ -29,6 +29,14 @@ class Users::SessionsController < Devise::SessionsController
     if !user_signed_in?
       redirect_to 'users/sign_in'
     end
+    if params[:notified] != nil
+      @notified = params[:notified]
+      n = Notification.find(params[:n_id])
+      if n.seen == false
+        n.seen = true
+        n.save
+      end
+    end
   end
 
 end

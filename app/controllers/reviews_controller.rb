@@ -31,6 +31,13 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
+        n = Notification.where(specialist_id: @review.specialist_id, notification_type: 'review', seen: false)
+        if n.exists?
+          n[0].count = n[0].count + 1
+          n[0].save
+        else
+          n1 = Notification.create(user_id: @review.specialist.user_id, specialist_id: @review.specialist_id, notification_type: 'review', seen: false, count: 1)
+        end
         format.html { redirect_to session.delete(:return_to) }
         format.json { render :show, status: :created, location: @review }
       else

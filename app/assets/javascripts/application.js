@@ -16,3 +16,10 @@
 //= require popper
 //= require bootstrap
 //= require turbolinks
+
+$(document).on('click', '.bell', function(){
+  $('.notifications').toggle();
+});
+
+
+  

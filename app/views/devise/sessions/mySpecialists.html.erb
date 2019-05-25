@@ -1,10 +1,11 @@
+<script src="<%= asset_path 'mySpecialists.js' %>"></script>
 <div class="my-specialists">
 <% if !current_user.specialists.exists? %>
 <div class="notice">Nie posiadasz zarejestrowanych działalności</div>
 <% else %>
 <div>Moje działalności</div>
 <% current_user.specialists.each do |specialist| %>
-  <a data-remote="true" href="/specialists/<%=specialist.id%>/details">
+  <a data-remote="true" href="/specialists/<%=specialist.id%>/details" id='s_<%= specialist.id %>'>
   <div class='my-specialist'>
     <div class="specialty"><%= specialist.specialty.name %></div>
     <div class="address"><%= specialist.city %>, <%= specialist.street %></div>
@@ -30,3 +31,7 @@
 
 <div id="details">
 </div>
+
+<% if @notified != nil %>
+<div style="display:none;" id="notified">s_<%= @notified %></div>
+<% end %>

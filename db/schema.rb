@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_163027) do
+ActiveRecord::Schema.define(version: 2019_05_25_094201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "specialist_id"
+    t.string "notification_type"
+    t.boolean "seen"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["specialist_id"], name: "index_notifications_on_specialist_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
@@ -73,6 +85,8 @@ ActiveRecord::Schema.define(version: 2019_05_11_163027) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "notifications", "specialists"
+  add_foreign_key "notifications", "users"
   add_foreign_key "reviews", "specialists"
   add_foreign_key "reviews", "users"
   add_foreign_key "specialists", "specialties"

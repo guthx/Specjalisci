@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  specialist: one
+  type: 
+  seen: 
+  count: 1
+
+two:
+  user: two
+  specialist: two
+  type: 
+  seen: 
+  count: 1

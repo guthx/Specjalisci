@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users,
-             :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations"}
+             :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations", :sessions => "users/sessions"}
   root 'home#index'
   resources :specialties, :reviews
   resources :specialists do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do
-    get 'mySpecialists', to: 'devise/sessions#mySpecialists'
+    get 'mySpecialists', to: 'users/sessions#mySpecialists'
   end
 
   get '/awaitingConfirmation', to: 'home#awaitingConfirmation', as: :awaitingConfirmation
