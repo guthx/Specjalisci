@@ -4,6 +4,7 @@
 <% else %>
 <div>Moje działalności</div>
 <% current_user.specialists.each do |specialist| %>
+  <a data-remote="true" href="/specialists/<%=specialist.id%>/details">
   <div class='my-specialist'>
     <div class="specialty"><%= specialist.specialty.name %></div>
     <div class="address"><%= specialist.city %>, <%= specialist.street %></div>
@@ -17,6 +18,7 @@
     <div class='warning'>Działalność niepotwierdzona</div>
     <% end %>
   </div>
+  </a>
 <% end %>
 <% end %>
 </div>
@@ -24,4 +26,7 @@
 <div id="new-specialist">
   <div><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
   <div><%= link_to 'Dodaj cudzą działalność', new_specialist_path(:foreign => true) %></div>
+</div>
+
+<div id="details">
 </div>

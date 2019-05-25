@@ -137,6 +137,10 @@ class SpecialistsController < ApplicationController
 
   def details
     @specialist = Specialist.find(params[:id])
+    respond_to do |format|
+      format.html { render :details }
+      format.js
+    end
   end
 
 
