@@ -15,8 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages
   devise_scope :user do
     get 'mySpecialists', to: 'users/sessions#mySpecialists'
+    get 'myMessages', to: 'users/sessions#myMessages'
+    get 'sentMessages', to: 'users/sessions#sentMessages'
+    get 'receivedMessages', to: 'users/sessions#receivedMessages'
   end
 
   get '/awaitingConfirmation', to: 'home#awaitingConfirmation', as: :awaitingConfirmation

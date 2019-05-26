@@ -1,0 +1,11 @@
+<% @messages.each do |message| %>
+
+<div class="message-entry">
+  <a href="/messages/<%=message.id%>" data-remote="true">
+  <div class="sender-name">Od: <%= message.sender.full_name %></div>
+  <div class="message-topic">Temat: <%= message.topic %></div>
+  <div class="message-short"><%= message.short %></div>
+  </a>
+</div>
+
+<% end %>

@@ -39,4 +39,18 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
+  def myMessages
+    if !user_signed_in?
+      redirect_to 'users/sign_in'
+    end
+  end
+
+  def sentMessages
+    @messages = current_user.messages_sent
+  end
+
+  def receivedMessages
+    @messages = current_user.messages_received
+  end
+
 end
