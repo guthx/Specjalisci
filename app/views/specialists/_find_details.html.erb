@@ -1,0 +1,32 @@
+<div id="specialistID" style="display:none;"><%= @specialist.id %></div>
+<div id="specialistDetails">
+  <div id="map" style="width:500px;height:500px;max-width:100%; max-height:100%;"></div>
+  <div class="box-trasa row">
+  <div class="col-sm-6">
+  <button id="drawRoute">Wyznacz trasę do lokalizacji specjalisty</button>
+  </div>
+  <div id="transitOptions" class="col-sm-6">
+  <div id="transitDriving" class="transitOption active"><i class="fas fa-car-alt"></i></div>
+  <div id="transitWalking" class="transitOption"><i class="fas fa-shoe-prints"></i></div>
+  </div>
+  <div id="timeOfTransit"></div>
+  </div>
+  <% if user_signed_in? %>
+  <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
+  <div id="sendMessage" class="przycisnik"><%= link_to 'Wyślij wiadomość', myMessages_path(redirect: 'send', id: @specialist.user.id) %></div>
+  <div id="giveReview" class="przycisnik"><%= link_to 'Wystaw recenzję', new_review_path(specialist_id: @specialist_id) %></div>
+  <div id="reviews">
+    <% @specialist.reviews.each do |review| %>
+    <div class="review">
+      <div class="reviewerName"><%= review.user.full_name %></div>
+      <div class="rating">
+        <div class='star-ratings-sprite'>
+          <span style="width: <%= (review.rating/5.0)*100 %>%" class="star-ratings-sprite-rating"></span>
+        </div>
+      </div>
+      <div class="reviewText"><%= review.text %></div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

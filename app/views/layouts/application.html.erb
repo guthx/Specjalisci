@@ -45,6 +45,9 @@
               <li class="notification"><a href='/mySpecialists?notified=<%=notif.specialist_id%>&n_id=<%=notif.id%>'>Twoja działalność pod adresem <%= notif.specialist.street %>
               otrzymała <%= notif.count %> nowe recenzje</a></li>
             <% end %>
+            <% if notif.notification_type == 'message' %>
+              <li class="notification"><a href="/myMessages?redirect=notification&n_id=<%=notif.id%>">Masz <%= notif.count %> nowych wiadomości!</a></li>
+            <% end %>
           <% end %>
         <% else %>
         Brak powiadomień

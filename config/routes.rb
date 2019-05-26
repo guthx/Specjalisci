@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'getReviews'
       get 'confirm'
       get 'details'
+      get 'find_details'
     end
   end
 

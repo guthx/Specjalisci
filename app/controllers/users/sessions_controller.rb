@@ -43,6 +43,18 @@ class Users::SessionsController < Devise::SessionsController
     if !user_signed_in?
       redirect_to 'users/sign_in'
     end
+    if params[:redirect] != nil
+      if params[:redirect] == 'send'
+        @redirect = 'send'
+        @receiver = params[:id]
+      end
+      if params[:redirect] == 'notification'
+        @redirect = 'notification'
+        n = Notification.find(params[:n_id])
+        n.seen = true
+        n.save
+      end
+    end
   end
 
   def sentMessages

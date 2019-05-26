@@ -26,8 +26,8 @@ $(document).ready(function(){
         } else {
             distance = response.rows[0].elements[0].distance.value;
             distanceText = response.rows[0].elements[0].distance.text;
-            $('#lista').append("<li class='specialist' distance=" + distance + " coordx=" + obj.coordx + " coordy=" + obj.coordy + " id=" + obj.id + ">" + "<div class='first_name'>Imie: " + obj.first_name + "</div><div class='last_name'>Nazwisko: " + obj.last_name + "</div><div class='location'><div class='address'>Lokacja: " + obj.city + ", " + obj.street + "</div><div class='distance'>" + distanceText + "</div></div>"
-            + "<div class='rating'><div class='star-ratings-sprite'><span style='width:" + (obj.rating / 5.0)*100 + "%' class='star-ratings-sprite-rating'></span></div></div>" + "<br></li>");
+            $('#lista').append("<li class='specialist' distance=" + distance + " coordx=" + obj.coordx + " coordy=" + obj.coordy + " id=" + obj.id + ">" + "<a href='/specialists/" + obj.id + "/find_details' data-remote='true'>"+"<div class='first_name'>Imie: " + obj.first_name + "</div><div class='last_name'>Nazwisko: " + obj.last_name + "</div><div class='location'><div class='address'>Lokacja: " + obj.city + ", " + obj.street + "</div><div class='distance'>" + distanceText + "</div></div>"
+            + "<div class='rating'><div class='star-ratings-sprite'><span style='width:" + (obj.rating / 5.0)*100 + "%' class='star-ratings-sprite-rating'></span></div></div></a>" + "<br></li>");
             if(distance > maxDistance){
               $('#lista').children().last().css({
                 display: "none"
@@ -46,44 +46,16 @@ $(document).ready(function(){
     $('#maxDistance').html("" + maxDistance/1000 + " km")
   });
 
-  var mapOptions = {
-    center: new google.maps.LatLng(50.026786, 21.985270),
-    zoom: 17,
-    mapTypeControlOptions: { mapTypeIds: [] }
-  }
-  map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  marker = new google.maps.Marker({
-     position: new google.maps.LatLng(50.026786, 21.985270),
-     map: map
-   });
+
 
    $(document).on('click', '.specialist', function(){
-     $('#timeOfTransit').html('');
-     var lat = $(this).attr('coordx');
-     var lng = $(this).attr('coordy');
-     var endpoint = new google.maps.LatLng(lat, lng);
-     if( $('.active').attr('id') == 'transitDriving' ){
-       travelMode = 'DRIVING';
-     } else if ( $('.active').attr('id') == 'transitWalking' ){
-       travelMode = 'WALKING';
-     }
-     marker.setPosition(endpoint);
-     map.setCenter(endpoint);
-     directionsDisplay.set('directions', null);
-     $('#drawRoute').off();
-     $('#drawRoute').click(function(){
-       draw_route(endpoint, travelMode);
-     });
-     $('#specialistDetails').css({
-       display: 'block'
-     });
-     $('#specialistID').html($(this).attr('id'));
-     link = '<a href="/reviews/new?specialist_id=' + $('#specialistID').html() + "&user_id=" + $('#currentUserID').html()  + '">Wystaw recenzję</a>';
-     $('#giveReview').html(link);
-     displayReviews($('#specialistID').html());
+  //   $('#specialistID').html($(this).attr('id'));
+  //   link = '<a href="/reviews/new?specialist_id=' + $('#specialistID').html() + "&user_id=" + $('#currentUserID').html()  + '">Wystaw recenzję</a>';
+  //   $('#giveReview').html(link);
+  //   displayReviews($('#specialistID').html());
    });
 
-   $('.transitOption').click(function(){
+   $(document).on('click', '.transitOption', function(){
      if(!$(this).hasClass('active')){
        $(this).addClass('active');
        $(this).siblings().removeClass('active');

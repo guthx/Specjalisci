@@ -1,6 +1,10 @@
 <% @messages.each do |message| %>
-
-<div class="message-entry">
+<% if message.seen == false %>
+<% cls = "message-entry unseen" %>
+<% else %>
+<% cls = "message-entry" %>
+<% end %>
+<div class="<%=cls%>">
   <a href="/messages/<%=message.id%>" data-remote="true">
   <div class="sender-name">Od: <%= message.sender.full_name %></div>
   <div class="message-topic">Temat: <%= message.topic %></div>

@@ -1,0 +1,33 @@
+$(".col-sm-7").html("<%= escape_javascript(render partial: 'find_details', locals: {specialist: @specialist}) %>");
+$('#timeOfTransit').html('');
+$(document).ajaxStop(function(){
+  var mapOptions = {
+    center: new google.maps.LatLng(50.026786, 21.985270),
+    zoom: 17,
+    mapTypeControlOptions: { mapTypeIds: [] }
+  }
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  marker = new google.maps.Marker({
+     position: new google.maps.LatLng(50.026786, 21.985270),
+     map: map
+   });
+  var lat = <%= @specialist.coordx %>
+  var lng = <%= @specialist.coordy %>
+  var endpoint = new google.maps.LatLng(lat, lng);
+  if( $('.active').attr('id') == 'transitDriving' ){
+    travelMode = 'DRIVING';
+  } else if ( $('.active').attr('id') == 'transitWalking' ){
+    travelMode = 'WALKING';
+  }
+  marker.setPosition(endpoint);
+  map.setCenter(endpoint);
+  directionsDisplay.set('directions', null);
+  $('#drawRoute').off();
+  $('#drawRoute').click(function(){
+    draw_route(endpoint, travelMode);
+  });
+  $('#specialistDetails').css({
+    display: 'block'
+  });
+
+});

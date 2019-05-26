@@ -1,0 +1,9 @@
+$(document).ready(function(){
+  $('#redirect').click();
+  $(document).ajaxStart(function(){
+    $('#loading').show();
+  });
+  $(document).ajaxStop(function(){
+    $('#loading').hide();
+  });
+});
