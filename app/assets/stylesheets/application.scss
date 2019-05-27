@@ -327,6 +327,21 @@ h1 {
     border: 0 !important;
 }
 
+#error_explanation {
+	background: rgba(255, 24, 24, 0.68);
+	padding: 10px;
+	margin-bottom: 15px;
+	color: #FFF;
+	border-radius: 8px;
+	border: red;
+}
+
+.info-pass {
+	font-size: 12px;
+	color: #aeaeae;
+	padding-top: 5px;
+}
+
 .form-control input {
 	width: 100%;
 	padding: 0px;
@@ -383,4 +398,13 @@ h1 {
 
 .unseen {
   font-weight: bold;
+}
+
+/ ***** Przypomnienie **********************************/
+
+.back-podstr{
+	background-image: url(asset_path("backgr-podsr.jpg"));
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
 }
