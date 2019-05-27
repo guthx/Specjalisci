@@ -1,25 +1,30 @@
-<div class="container">
-<div class="box-finder">
-<script src="<%= asset_path 'home.js' %>"></script>
-<%= form_tag('/specialists/find', method: :get) %>
-<div class="row">
-	<div class="col-sm-5">
-		<% if !user_signed_in? %>
-		<input id="pac-input" class="controls" type="text" placeholder="Wybierz swoje miejsce zamieszkania"><br/>
-		<% else %>
-		<input id="pac-input" class="controls" type="text" placeholder="Wybierz swoje miejsce zamieszkania" value="<%= current_user.city %>, <%= current_user.address %>"><br/>
-		<% end %>
-	</div>
-	<div class="col-sm-4">
-		<%= select_tag "specialty_id", options_for_select(Specialty.all.order(:name).collect { |b| [ b.name, b.id ] }) %> <br/>
-		<div style="display:none;">
-		  <%= text_field_tag 'coordx' %>
-		  <%= text_field_tag 'coordy' %>
+<header class="masthead text-white text-center">	
+	<div class="container">
+		<div class="box-title">
+			<h1>Znajdź Specjalistę online</h1>
+		</div>
+		<div class="box-finder">
+		<script src="<%= asset_path 'home.js' %>"></script>
+		<%= form_tag('/specialists/find', method: :get) %>
+		<div class="row">
+			<div class="col-sm-6">
+				<% if !user_signed_in? %>
+				<input id="pac-input" class="controls" type="text" placeholder="Wybierz swoje miejsce zamieszkania"><br/>
+				<% else %>
+				<input id="pac-input" class="controls" type="text" placeholder="Wybierz swoje miejsce zamieszkania" value="<%= current_user.city %>, <%= current_user.address %>"><br/>
+				<% end %>
+			</div>
+			<div class="col-sm-4">
+				<%= select_tag "specialty_id", options_for_select(Specialty.all.order(:name).collect { |b| [ b.name, b.id ] }) %> <br/>
+				<div style="display:none;">
+				  <%= text_field_tag 'coordx' %>
+				  <%= text_field_tag 'coordy' %>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<%= submit_tag 'Znajdź' %>
+			</div>
+		</div>
 		</div>
 	</div>
-	<div class="col-sm-3">
-		<%= submit_tag 'Znajdź' %>
-	</div>
-</div>
-</div>
-</div>
+</header>
