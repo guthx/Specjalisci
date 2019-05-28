@@ -1,13 +1,19 @@
-<h1> Działalność została zarejestrowana! </h1>
-<% if @confirmed == 'true' %>
-<p> Od teraz możesz sprawdzić stan swojej działalności oraz edytować jej informacje w zakładce "Moje działalności" </p>
-<p> Twoja działalność jest już dostępna do wyszukania przez użytkowników. </p>
-<% else if @confirmed == 'false' %>
-<p> Od teraz możesz sprawdzić stan swojej działalności oraz edytować jej informacje w zakładce "Moje działalności" </p>
-<p> Twoja działalność nie jest dostępna do wyszukania przez użytkowników do czasu potwierdzenia jej. <br>
-    Instrukcje do potwiedzenia działalności zostały przesłane na adres e-mail powiązany z działalnością </p>
-<% else %>
-<p> Na adres e-mail właściciela zarejestrowanej działalności wysłana została wiadomość e-mail, dzięki której będzie
-    mógł on potwierdzić rejestrację działalności.</p>
-<% end %>
-<% end %>
+<div class="back-podstr">
+	<div class="container my-subpage">
+		<div class="komunikat">
+		<h2> Działalność została zarejestrowana! </h2>
+		<% if @confirmed == 'true' %>
+		<p> Od teraz możesz sprawdzić stan swojej działalności oraz edytować jej informacje w zakładce "Moje działalności" </p>
+		<p> Twoja działalność jest już dostępna do wyszukania przez użytkowników. </p>
+		<% else if @confirmed == 'false' %>
+		<p> Od teraz możesz sprawdzić stan swojej działalności oraz edytować jej informacje w zakładce "Moje działalności" </p>
+		<p> Twoja działalność nie jest dostępna do wyszukania przez użytkowników do czasu potwierdzenia jej. <br>
+			Instrukcje do potwiedzenia działalności zostały przesłane na adres e-mail powiązanym z działalnością </p>
+		<% else %>
+		<p> Na adres e-mail właściciela zarejestrowanej działalności wysłana została wiadomość e-mail, dzięki której będzie
+			mógł on potwierdzić rejestrację działalności.</p>
+		<% end %>
+		<% end %>
+		</div>
+	</div>
+</div>

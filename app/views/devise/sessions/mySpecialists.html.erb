@@ -1,37 +1,51 @@
-<script src="<%= asset_path 'mySpecialists.js' %>"></script>
-<div class="my-specialists">
-<% if !current_user.specialists.exists? %>
-<div class="notice">Nie posiadasz zarejestrowanych działalności</div>
-<% else %>
-<div>Moje działalności</div>
-<% current_user.specialists.each do |specialist| %>
-  <a data-remote="true" href="/specialists/<%=specialist.id%>/details" id='s_<%= specialist.id %>'>
-  <div class='my-specialist'>
-    <div class="specialty"><%= specialist.specialty.name %></div>
-    <div class="address"><%= specialist.city %>, <%= specialist.street %></div>
-    <div class='rating'>
-      <div class='star-ratings-sprite'>
-        <span style='width:<%= (specialist.rating / 5.0)*100 %>%' class='star-ratings-sprite-rating'></span>
-      </div>
-    </div>
-    <div class='review-count'>Recenzji: <%= specialist.reviews.count %></div>
-    <% if specialist.confirmed == false %>
-    <div class='warning'>Działalność niepotwierdzona</div>
-    <% end %>
-  </div>
-  </a>
-<% end %>
-<% end %>
-</div>
+<div class="back-podstr">
+	<div class="container my-subpage">
+	<script src="<%= asset_path 'mySpecialists.js' %>"></script>
+			<div id="new-specialist">
+				<div class="row">
+					<div class="col-md-6">
+					<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
+					</div>
+					<div class="col-md-6">
+					<div class="dodawanie-specjalisty"><%= link_to 'Dodaj cudzą działalność', new_specialist_path(:foreign => true) %></div>
+					</div>
+				</div>
+			</div>
+	<div class="my-specialists komunikat">
+			<% if !current_user.specialists.exists? %>
+			<div class="notice">Nie posiadasz zarejestrowanych działalności</div>
+			<% else %>
+			<h2>Moje działalności</h2>
+			<% current_user.specialists.each do |specialist| %>
+			  <a data-remote="true" href="/specialists/<%=specialist.id%>/details" id='s_<%= specialist.id %>'>
+			  <div class='my-specialist row'>
+				<div class="col-md-3">
+					<div class="specialty"><%= specialist.company_name %></div>
+					<div class="address"><%= specialist.city %>, <%= specialist.street %></br> <%= specialist.specialty.name %></div>
+				</div>
+				<div class="col-md-4">
+					<div class='rating'>
+					  <div class='star-ratings-sprite'>
+						<span style='width:<%= (specialist.rating / 5.0)*100 %>%' class='star-ratings-sprite-rating'></span>
+					  </div>
+					</div>
+					<div class='review-count'>Recenzji: <%= specialist.reviews.count %></div>
+					<% if specialist.confirmed == false %>
+					<div class='warning'>Działalność niepotwierdzona</div>
+					<% end %>
+				</div>
+			  </div>
+			  
+			  </a>
+			<% end %>
+			<% end %>
+			</div>
 
-<div id="new-specialist">
-  <div><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
-  <div><%= link_to 'Dodaj cudzą działalność', new_specialist_path(:foreign => true) %></div>
-</div>
+			<div id="details">
+			</div>
 
-<div id="details">
+			<% if @notified != nil %>
+			<div style="display:none;" id="notified">s_<%= @notified %></div>
+			<% end %>
+	</div>
 </div>
-
-<% if @notified != nil %>
-<div style="display:none;" id="notified">s_<%= @notified %></div>
-<% end %>
