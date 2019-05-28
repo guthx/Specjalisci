@@ -1,2 +1,41 @@
-Tutaj mają być szczegóły i recenzje wybranej działalności.
-views/specialists/_pdetailts.html.erb
+<div id="specialistID" style="display:none;"><%= @specialist.id %></div>
+<div id="specialistDetails">
+	<div class="info-special">
+		<h1><%= @specialist.company_name %></h1>
+		<table>
+			<tr>
+				<td>Adres</td> 
+				<td><%= @specialist.city %>, <%= @specialist.street %></td>
+			</tr>
+			<tr>
+				<td>Właściciel</td> 
+				<td><%= @specialist.first_name %> <%= @specialist.last_name %></td>
+			</tr>
+			<tr>
+				<td>Numer telefonu</td>
+				<td><%= @specialist.phone %></td>
+			</tr>
+			<tr>
+				<td>Dodatkowe informacje</td>
+				<td><%= @specialist.additional_info %></td>
+			</tr>
+		</table>
+	</div>
+  <% if user_signed_in? %>
+  <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
+  
+  <div id="reviews">
+    <% @specialist.reviews.each do |review| %>
+    <div class="review">
+      <div class="reviewerName"><%= review.user.full_name %></div>
+      <div class="rating">
+        <div class='star-ratings-sprite'>
+          <span style="width: <%= (review.rating/5.0)*100 %>%" class="star-ratings-sprite-rating"></span>
+        </div>
+      </div>
+      <div class="reviewText"><%= review.text %></div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

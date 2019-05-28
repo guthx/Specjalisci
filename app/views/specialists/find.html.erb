@@ -1,20 +1,22 @@
-<div class="container">
-<script src="<%= asset_path 'find.js'%>"></script>
-<div style="display:none;">
-  <div id="coordx"><%= @coordx %></div>
-  <div id="coordy"><%= @coordy %></div>
-  <div id="specialty_id"><%= @specialty_id %></div>
-</div>
-<div class="row">
-	<div class="col-sm-5">
-	<div class="przesuwak">
-	<input id="distanceSlider" type="range" name="distance" min="1" max="50" value="5">
-	<div id="maxDistance">5 km</div>
+<div class="back-podstr">
+	<div class="container my-subpage">
+		<script src="<%= asset_path 'find.js'%>"></script>
+		<div style="display:none;">
+		  <div id="coordx"><%= @coordx %></div>
+		  <div id="coordy"><%= @coordy %></div>
+		  <div id="specialty_id"><%= @specialty_id %></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-5">
+			<div class="przesuwak row">
+				<div class="col-md-7"><input id="distanceSlider" type="range" name="distance" min="1" max="50" value="5"></div>
+				<div class="col-md-4"><div id="maxDistance">5 km</div></div>
+			</div>
+			<ul id="lista">
+			</ul>
+			</div>
+			<div class="col-sm-7">
+			</div>
+		</div>
 	</div>
-	<ul id="lista">
-	</ul>
-	</div>
-	<div class="col-sm-7">
-	</div>
-</div>
 </div>
