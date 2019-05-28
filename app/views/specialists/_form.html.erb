@@ -13,16 +13,24 @@
   <% end %>
     <%= hidden_field_tag 'foreign', @foreign %>
 
-
-  <div class="field">
     <% if @foreign == false %>
     <div class="tip">Możesz podać inny adres e-mail unikalny dla tej działalności, ale wymagać on będzie aktywacji</div>
     <% else %>
     <div class="tip">Adres e-mail musi należeć do właściciela działalności.
     W razie wykrycia rejestracji cudzej działalności pod własnym adresem e-mail może dojść do zablokowania konta.</div>
     <% end %>
-    <%= form.label :email %>
-    <%= form.email_field :email, :value => current_user.email, autofocus: true, autocomplete: "email" %>
+	
+<div class="row">
+<div class="col-md-5">
+  <div>
+	<div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa fa-at"></i></span>
+		</div>
+		<div class="form-control">
+		<%= form.email_field :email, :value => current_user.email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+		</div>
+	</div>
   </div>
 
   <% if @foreign == false %>
@@ -30,43 +38,92 @@
     <%= form.hidden_field :last_name, :value => current_user.last_name, :readonly => true %>
   <% else %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-user"></i></span>
+	</div>
+    <div class="form-control">
+    <%= form.text_field :first_name, placeholder: "Imię" %>
+	</div>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+	</div>
+    <div class="form-control">
+    <%= form.text_field :last_name, placeholder: "Nazwisko" %>
+	</div>
   </div>
 
   <% end %>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
+    <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-building"></i></span>
+	</div>
+    <div class="form-control">
+    <%= form.text_field :company_name, placeholder: "Nazwa firmy" %>
+	</div>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+	</div>
+    <div class="form-control">
+    <%= form.text_field :city, placeholder: "Miasto" %>
+	</div>
   </div>
 
-  <div class="field">
-    <%= form.label :street %>
-    <%= form.text_field :street %>
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-address-card"></i></span>
+	</div>
+    <div class="form-control">
+    <%= form.text_field :street, placeholder: "Ulica" %>
+	</div>
   </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-phone-square"></i></span>
+	</div>
+    <div class="form-control">
+    <%= form.text_field :phone, placeholder: "Numer telefonu" %>
+	</div>
   </div>
-
-  <div class="field">
-    <%= form.label :additional_info %>
-    <%= form.text_area :additional_info %>
+  
+   <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-star"></i></span>
+	</div>
+	<div class="form-control">
+    <%= form.select :specialty_id, Specialty.all.order(:name).collect { |b| [ b.name, b.id ] } %> <br/>
+	</div>
   </div>
-  <button type="button" id="set_map">Ustaw polozenie mapy</button>
+  
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-info-circle"></i></span>
+	</div>
+	<div class="form-control tekstowy-area">
+    <%= form.text_area :additional_info, placeholder: "Dodatkowe informacje" %>
+	</div>
+  </div>
+</div>
+<div class="col-md-7">
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
+	</div>
+	<div class="form-control mapkowy-form">
+		<div class="przycisnik-02">
+	        <button type="button" id="set_map">Ustaw położenie mapy</button>
+	    </div>
+		<div id="map" style="width:500px;height:350px;max-width:100%; max-height:100%;"></div>
+	</div>
+  </div>
   <div style="display:none;">
     <div class="field">
       <%= form.label :coordx %>
@@ -78,17 +135,16 @@
       <%= form.text_field :coordy %>
     </div>
   </div>
-  <div class="field">
-    <%= form.label :specialty_id %>
-    <%= form.select :specialty_id, Specialty.all.order(:name).collect { |b| [ b.name, b.id ] } %> <br/>
-  </div>
+
   <% if @foreign == false %>
     <%= form.hidden_field :user_id, :value => current_user.id %>
   <% else %>
     <%= form.hidden_field :user_id, :value => 1 %>
   <% end %>
+</div>
+</div>
 
-  <div id="map" style="width:500px;height:500px;max-width:100%; max-height:100%;"></div>
+  
 
 
   <div class="actions">

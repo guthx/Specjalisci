@@ -399,8 +399,44 @@ h1 {
 /** *** Przypomnienie ******************************** **/
 
 .back-podstr{
-	background-image: url(asset_path("backgr-podsr.jpg"));
+	background-image: url(asset_path("backgr-03.jpg"));
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position: bottom;
 	height: 100%;
 }
+
+/* ********************* Nowy specjalista *************** */
+
+.tip {
+	padding: 5px 5px 10px 5px;
+	color: #bababa;
+	line-height: 20px;
+}
+
+.tekstowy-area {
+	height: 83px;
+}
+
+.form-control textarea, .form-control select {
+	width: 100%;
+	border: none;
+}
+
+.przycisnik-02 {
+	text-align: center;
+	padding: 0px 0px 10px 0px;
+}
+
+.mapkowy-form {
+	height: 407px;
+}
+
+.przycisnik-02 button {
+	padding: 4px 25px;
+	border: 1px solid #c6c6c6;
+	border-radius: .25rem;
+	color: #ea4335;
+}
+
+

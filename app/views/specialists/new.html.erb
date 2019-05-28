@@ -1,11 +1,17 @@
-<div class="container">
-<div class="card bg-light">
-<div class="card-body  mx-auto" style="min-width: 500px;">
-<h1>New Specialist</h1>
-
-<%= render 'form', specialist: @specialist %>
-
-<%= link_to 'Back', specialists_path %>
-</div>
+<div class="page-login">
+<div class="container my-subpage">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card" style="width:800px;">
+			<div class="card-header">
+				<h3>Nowy specjalista</h3>
+			</div>
+			<div class="card-body">
+				<%= render 'form', specialist: @specialist %>
+			</div>
+			<div class="card-footer">
+			<%= link_to 'Back', specialists_path %>
+			</div>
+		</div>
+	</div>
 </div>
 </div>
