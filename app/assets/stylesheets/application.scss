@@ -125,10 +125,6 @@
 
 /* ************************* MENU ************************/
 
-body {
-	margin-top: 70px;
-}
-
 #topBar {
 	padding: 10px;
 	background-color: #212529;
@@ -400,7 +396,7 @@ h1 {
   font-weight: bold;
 }
 
-/ ***** Przypomnienie **********************************/
+/** *** Przypomnienie ******************************** **/
 
 .back-podstr{
 	background-image: url(asset_path("backgr-podsr.jpg"));
