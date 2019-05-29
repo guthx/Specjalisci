@@ -7,7 +7,7 @@
 		</p></div>
 		<div class="col-md-6">
 			<div id="sendMessage" class="przycisnik"><%= link_to 'Wyślij wiadomość', myMessages_path(redirect: 'send', id: @specialist.user.id) %></div>
-			<div id="giveReview" class="przycisnik"><%= link_to 'Wystaw recenzję', new_review_path(specialist_id: @specialist_id) %></div>
+			<div id="giveReview" class="przycisnik"><%= link_to 'Wystaw recenzję', new_review_path(specialist_id: @specialist.id, user_id: current_user.id) %></div>
 		</div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 	</div>
   <% if user_signed_in? %>
   <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
-  
+
   <div id="reviews">
     <% @specialist.reviews.each do |review| %>
     <div class="review">

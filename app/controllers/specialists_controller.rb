@@ -29,7 +29,7 @@ class SpecialistsController < ApplicationController
   # POST /specialists
   # POST /specialists.json
   def create
-    if params[:foreign] == false
+    if params[:foreign] == "false"
       @specialist = Specialist.new(specialist_params)
       if @specialist.email == current_user.email
         @specialist.confirmation_code = nil
@@ -47,6 +47,7 @@ class SpecialistsController < ApplicationController
             format.html { redirect_to '/specialist_created?confirmed=true' }
           end
         else
+          @foreign = false
           format.html { render :new }
           format.json { render json: @specialist.errors, status: :unprocessable_entity }
         end
