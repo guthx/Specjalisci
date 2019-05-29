@@ -1,12 +1,20 @@
-<% if @message.sender_id == current_user.id %>
-<div class="sender-name">Do: <%= message.receiver.full_name %></div>
-<% else %>
-<div class="sender-name">Od: <%= message.sender.full_name %></div>
-<% end %>
-<div class="message-topic">Temat: <%= message.topic %></div>
-<div class="message-full"><%= message.message %></div>
-<% if @message.sender_id == current_user.id %>
-<%= link_to 'Odpowiedz', new_message_path(receiver_id: @message.receiver_id), :remote => true %>
-<% else %>
-<%= link_to 'Odpowiedz', new_message_path(receiver_id: @message.sender_id), :remote => true %>
-<% end %>
+<div class="show-wiad row">
+	<div class="col-md-4">
+		<% if @message.sender_id == current_user.id %>
+		<div class="sender-name"><strong>Do:</strong> <%= message.receiver.full_name %></div>
+		<% else %>
+		<div class="sender-name"><strong>Od:</strong> <%= message.sender.full_name %></div>
+		<% end %>
+		<div class="message-topic"><strong>Temat:</strong> <%= message.topic %></div>
+	</div>
+	<div class="col-md-8">
+		<div class="message-full"><%= message.message %></div>
+		<div class="przycisnik">
+		<% if @message.sender_id == current_user.id %>
+		<%= link_to 'Odpowiedz', new_message_path(receiver_id: @message.receiver_id), :remote => true %>
+		<% else %>
+		<%= link_to 'Odpowiedz', new_message_path(receiver_id: @message.sender_id), :remote => true %>
+		<% end %>
+		</div>
+	</div>
+</div>

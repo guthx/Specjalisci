@@ -1,21 +1,19 @@
 <div class="back-podstr">
 	<div class="container my-subpage">
 	<script src="<%= asset_path 'mySpecialists.js' %>"></script>
-			<div id="new-specialist">
-				<div class="row">
-					<div class="col-md-6">
-					<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
-					</div>
-					<div class="col-md-6">
-					<div class="dodawanie-specjalisty"><%= link_to 'Dodaj cudzą działalność', new_specialist_path(:foreign => true) %></div>
-					</div>
-				</div>
-			</div>
 	<div class="my-specialists komunikat">
-			<% if !current_user.specialists.exists? %>
+		<div class="row">
+			<div class="col-md-4"><% if !current_user.specialists.exists? %>
 			<div class="notice">Nie posiadasz zarejestrowanych działalności</div>
 			<% else %>
 			<h2>Moje działalności</h2>
+			</div>
+			<div class="col-md-8">
+				<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
+				<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj cudzą działalność', new_specialist_path(:foreign => true) %></div>
+			</div>
+		</div>
+			
 			<% current_user.specialists.each do |specialist| %>
 			  <a data-remote="true" href="/specialists/<%=specialist.id%>/details" id='s_<%= specialist.id %>'>
 			  <div class='my-specialist row'>

@@ -1,16 +1,26 @@
-<script src="<%= asset_path 'myMessages.js' %>"></script>
-<h1> Moje wiadomości </h1>
-<%= link_to 'Wiadomości odebrane', receivedMessages_path, :remote => true, :id => 'receivedMessages' %>
-<%= link_to 'Wiadomości wysłane', sentMessages_path, :remote => true, :id => 'sentMessages' %>
-<div id="message-list">
-</div>
-<div id="loading" style="display:none;">
-  <%= image_tag '35.gif' %>
-</div>
+<div class="back-podstr">
+	<div class="container my-subpage">
+		<script src="<%= asset_path 'myMessages.js' %>"></script>
+		<div class="my-specialists komunikat">
+		<div class="row" style="margin-top: 25px;">
+			<div class="col-md-4"><h2 class="tytulek"> Moje wiadomości </h2></div>
+			<div class="col-md-8">
+				<div class="dodawanie-specjalisty special-right"><%= link_to 'Wiadomości odebrane', receivedMessages_path, :remote => true, :id => 'receivedMessages' %></div>
+				<div class="dodawanie-specjalisty special-right"><%= link_to 'Wiadomości wysłane', sentMessages_path, :remote => true, :id => 'sentMessages' %></div>
+			</div>
+		</div>
+		<div id="message-list">
+		</div>
+		<div id="loading" style="text-align: center; display:none;">
+		  <%= image_tag '35.gif' %>
+		</div>
 
-<% if @redirect == 'send' %>
-  <a style="display:none;" data-remote="true" id="redirect" href="/messages/new?receiver_id=<%=@receiver%>"></a>
-<% end %>
-<% if @redirect == 'notification' %>
-  <a style="display:none;" data-remote="true" id="redirect" href="/receivedMessages"></a>
-<% end %>
+		<% if @redirect == 'send' %>
+		  <a style="display:none;" data-remote="true" id="redirect" href="/messages/new?receiver_id=<%=@receiver%>"></a>
+		<% end %>
+		<% if @redirect == 'notification' %>
+		  <a style="display:none;" data-remote="true" id="redirect" href="/receivedMessages"></a>
+		<% end %>
+		</div>
+	</div>
+</div>

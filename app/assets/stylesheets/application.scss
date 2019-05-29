@@ -532,6 +532,7 @@ h1 {
 .my-specialists h2 {
 	text-align: center;
 	padding: 10px;
+	margin-top: -4px;
 }
 
 .my-specialist {
@@ -583,4 +584,68 @@ h1 {
   position: fixed;
   top: 50%;
   left: 50%;
+}
+
+
+
+/* **** Wiadomosci **** */
+.message-entry {
+	padding: 5px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.sender-name, .message-topic {
+	border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+#message-list {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.message-entry:nth-child(2n) {
+	background: #bfbfbf;
+}
+
+.message-entry {
+	padding: 10px;
+}
+
+.message-entry a {
+	color: #000;
+}
+
+.show-wiad {
+	padding: 10px;
+	background: #fff;
+	border-radius: 0.25rem;
+}
+
+.dodawanie-specjalisty {
+	margin: 10px;
+}
+
+.new-mess{
+	display: flex;
+}
+
+.new-mess input {
+	border-bottom: 1px solid #575757;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	margin-top: -5px;
+}
+
+.wiadomosc-tresc textarea {
+	width: 100%;
+	min-height: 140px;
+	padding: 10px;
+}
+
+.wiad-podtytul {
+	margin: 0px;
+	padding: 10px;
+	background-color: #feaf10;
+	border-radius: 0.25rem 0.25rem 0 0;
 }

@@ -11,26 +11,28 @@
     </div>
   <% end %>
     <%= hidden_field_tag 'foreign', @foreign %>
+	<h3 class="wiad-podtytul">Nowa wiadomość</h3>
+	<div class="show-wiad row">
+		<div class="col-md-4" style="border-right: 1px solid rgba(0, 0, 0, 0.125);">
+		  <div class="field">
+			<strong>Do:</strong> <%= @receiver.full_name %>
+		  </div>
 
+			<%= form.hidden_field :sender_id, :value => current_user.id, :readonly => true %>
+			<%= form.hidden_field :receiver_id, :value => @receiver.id, :readonly => true %>
 
-  <div class="field">
-    Do: <%= @receiver.full_name %>
-  </div>
+		  <div class="field new-mess">
+			<strong>Temat: </strong><%= form.text_field :topic, placeholder: "Podaj temat wiadomości" %>
+		  </div>
+		</div>
+		<div class="col-md-8">
+		  <div class="field wiadomosc-tresc">
+			<%= form.text_area :message, placeholder: "Treść wiadomości" %>
+		  </div>
 
-    <%= form.hidden_field :sender_id, :value => current_user.id, :readonly => true %>
-    <%= form.hidden_field :receiver_id, :value => @receiver.id, :readonly => true %>
-
-  <div class="field">
-    <%= form.label :topic %>
-    <%= form.text_field :topic %>
-  </div>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+		  <div class="actions" style="text-align:right;">
+			<%= form.submit %>
+		  </div>
+		</div>
+	</div>
 <% end %>

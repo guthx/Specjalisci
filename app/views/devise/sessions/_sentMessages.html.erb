@@ -1,9 +1,14 @@
+<h3 class="wiad-podtytul">Wiadomości wysłane</h3>
+<div class="message-entry row" style="background-color: rgba(0, 0, 0, 0.5); font-weight: 600;">
+	<div class="sender-name wiad-naglowek col-md-3">Odbiorca</div>
+	<div class="message-topic wiad-naglowek col-md-3">Temat</div>
+</div>
 <% @messages.each do |message| %>
 <div class="message-entry">
-  <a href="/messages/<%=message.id%>" data-remote="true">
-  <div class="sender-name">Do: <%= message.receiver.full_name %></div>
-  <div class="message-topic">Temat: <%= message.topic %></div>
-  <div class="message-short"><%= message.short %></div>
+  <a href="/messages/<%=message.id%>" data-remote="true" class="row">
+  <div class="sender-name col-md-3"><%= message.receiver.full_name %></div>
+  <div class="message-topic col-md-3"><%= message.topic %></div>
+  <div class="message-short col-md-6"><%= message.short %></div>
   </a>
 </div>
 
