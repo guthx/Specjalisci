@@ -38,8 +38,9 @@ class ReviewsController < ApplicationController
         else
           n1 = Notification.create(user_id: @review.specialist.user_id, specialist_id: @review.specialist_id, notification_type: 'review', seen: false, count: 1)
         end
-        format.html { redirect_to session.delete(:return_to) }
-        format.json { render :show, status: :created, location: @review }
+        #format.html { redirect_to session.delete(:return_to) }
+        #format.json { render :show, status: :created, location: @review }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }

@@ -22,4 +22,6 @@ $(document).on('click', '.bell', function(){
 });
 
 
-  
+$(document).on('click', '#close-review-window', function(){
+  $('#new-review').html('');
+});
