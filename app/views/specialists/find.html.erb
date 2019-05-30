@@ -13,6 +13,20 @@
 				<div class="col-md-4"><div id="maxDistance">5 km</div></div>
 			</div>
 			<ul id="lista">
+				<% Specialist.where(specialty_id: @specialty_id).where(confirmed: true).each do |specialist| %>
+					<li id="<%= specialist.id %>" class="specialist" distance="" coordx="<%=specialist.coordx%>" coordy="<%=specialist.coordy%>" style="display:none;">
+					<a href="/specialists/<%=specialist.id%>/find_details" data-remote="true">
+						<div class="first_name"><%= specialist.full_name %></div>
+						<div class="location">
+							<div class="address">Lokacja: <%= specialist.address %></div>
+							<div class="distance"></div>
+						</div>
+						<div class="rating">
+							<div class="star-ratings-sprite"><span style="width: <%= specialist.rating*20 %>%" class="star-ratings-sprite-rating"></span></div>
+						</div>
+					</a>
+					</li>
+				<% end %>
 			</ul>
 			</div>
 			<div class="col-sm-7">

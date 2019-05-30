@@ -8,12 +8,12 @@ $(document).ready(function(){
   position = new google.maps.LatLng(coordx, coordy);
   var distanceService = new google.maps.DistanceMatrixService();
   maxDistance = 5000;
-  console.log(specialty_id);
-  var url = "findJSON.json?id=" + specialty_id;
-  $.getJSON(url, function(json){
-    console.log(json);
-    $.each(json, function(i, obj){
-      var position2 = new google.maps.LatLng(obj.coordx, obj.coordy);
+  distance_array = [];
+  distance_text_array = [];
+  $(".specialist").each(function(){
+      var posx = $(this).attr('coordx');
+      var posy = $(this).attr('coordy');
+      var position2 = new google.maps.LatLng(posx, posy);
       distanceService.getDistanceMatrix({
         origins: [position],
         destinations: [position2],
@@ -26,19 +26,14 @@ $(document).ready(function(){
         } else {
             distance = response.rows[0].elements[0].distance.value;
             distanceText = response.rows[0].elements[0].distance.text;
-            $('#lista').append("<li class='specialist' distance=" + distance + " coordx=" + obj.coordx + " coordy=" + obj.coordy + " id=" + obj.id + ">" + "<a href='/specialists/" + obj.id + "/find_details' data-remote='true'>"+"<div class='first_name'>Imie: " + obj.first_name + "</div><div class='last_name'>Nazwisko: " + obj.last_name + "</div><div class='location'><div class='address'>Lokacja: " + obj.city + ", " + obj.street + "</div><div class='distance'>" + distanceText + "</div></div>"
-            + "<div class='rating'><div class='star-ratings-sprite'><span style='width:" + (obj.rating / 5.0)*100 + "%' class='star-ratings-sprite-rating'></span></div></div></a>" + "<br></li>");
-            if(distance > maxDistance){
-              $('#lista').children().last().css({
-                display: "none"
-              });
+            distance_array.push(distance);
+            distance_text_array.push(distanceText);
+            if (distance_array.length == $(".specialist").length){
+              set_distances();
             }
         }
       });
     });
-  }).fail( function(d, textStatus, error) {
-        console.error("getJSON failed, status: " + textStatus + ", error: "+error)
-  });
 
   $('#distanceSlider').change(function(){
     maxDistance = $('#distanceSlider').val() * 1000;
@@ -128,4 +123,24 @@ function displayReviews(specialistID){
       + "<div class='reviewText'>" + obj.text + "</div></div>");
     });
   });
+}
+
+function set_distances(){
+  var i=0;
+  $('.specialist').each(function(){
+    var spec = $(this);
+    distance = distance_array[i];
+    distanceText = distance_text_array[i];
+    if (distance > 50000){
+      spec.remove();
+    } else {
+      spec.attr('distance', distance);
+      spec.children('a').children('.location').children('.distance').html(distanceText);
+      if(distance <= maxDistance) {
+        spec.show();
+      }
+    }
+    i = i+1;
+  });
+
 }
