@@ -1,5 +1,6 @@
 $(document).ready(function(){
   $('#redirect').click();
+  $(document).unbind('ajaxStop');
   $(document).ajaxStart(function(){
     $('#loading').show();
   });
