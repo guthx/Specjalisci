@@ -13,7 +13,7 @@
 				<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj cudzą działalność', new_specialist_path(:foreign => true) %></div>
 			</div>
 		</div>
-			
+
 			<% current_user.specialists.each do |specialist| %>
 			  <a data-remote="true" href="/specialists/<%=specialist.id%>/details" id='s_<%= specialist.id %>'>
 			  <div class='my-specialist row'>
@@ -33,7 +33,7 @@
 					<% end %>
 				</div>
 			  </div>
-			  
+
 			  </a>
 			<% end %>
 			<% end %>

@@ -33,7 +33,7 @@
 	  <% end %>
   <div id="reviews">
 	<h3 style="margin-bottom: 20px;">Wystawione recenzje</h3>
-    <% @specialist.reviews.each do |review| %>
+    <% @specialist.reviews.order('created_at DESC').each do |review| %>
     <div class="review">
 		<div class="row" style="padding-left: 15px;">
 			  <div class="reviewerName"><%= review.user.full_name %></div>

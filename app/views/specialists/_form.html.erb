@@ -19,7 +19,7 @@
     <div class="tip">Adres e-mail musi należeć do właściciela działalności.
     W razie wykrycia rejestracji cudzej działalności pod własnym adresem e-mail może dojść do zablokowania konta.</div>
     <% end %>
-	
+
 <div class="row">
 <div class="col-md-5">
   <div>
@@ -93,7 +93,7 @@
     <%= form.text_field :phone, placeholder: "Numer telefonu" %>
 	</div>
   </div>
-  
+
    <div class="input-group form-group">
 	<div class="input-group-prepend">
 		<span class="input-group-text"><i class="fas fa-star"></i></span>
@@ -102,7 +102,7 @@
     <%= form.select :specialty_id, Specialty.all.order(:name).collect { |b| [ b.name, b.id ] } %> <br/>
 	</div>
   </div>
-  
+
   <div class="input-group form-group">
 	<div class="input-group-prepend">
 		<span class="input-group-text"><i class="fas fa-info-circle"></i></span>
@@ -144,10 +144,10 @@
 </div>
 </div>
 
-  
+
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit('Dodaj działalność') %>
   </div>
 <% end %>

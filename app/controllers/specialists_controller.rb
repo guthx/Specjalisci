@@ -79,7 +79,7 @@ class SpecialistsController < ApplicationController
   def update
     respond_to do |format|
       if @specialist.update(specialist_params)
-        format.html { redirect_to @specialist, notice: 'Specialist was successfully updated.' }
+        format.html { redirect_to '/mySpecialists' }
         format.json { render :show, status: :ok, location: @specialist }
       else
         format.html { render :edit }

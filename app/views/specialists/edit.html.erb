@@ -1,6 +1,127 @@
-<h1>Editing Specialist</h1>
+<div class="page-login">
+<div class="container my-subpage">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card" style="width:800px;">
+			<div class="card-header">
+				<h3>Edycja danych</h3>
+			</div>
+			<div class="card-body">
+        <script src="<%= asset_path 'test.js' %>"></script>
+        <%= form_with(model: @specialist, local: true) do |form| %>
+          <% if @specialist.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@specialist.errors.count, "error") %> prohibited this specialist from being saved:</h2>
 
-<%= render 'form', specialist: @specialist %>
+              <ul>
+              <% @specialist.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <div class="row">
+        <div class="col-md-5">
+          <div>
+        		<%= form.hidden_field :email, :value => @specialist.email %>
 
-<%= link_to 'Show', @specialist %> |
-<%= link_to 'Back', specialists_path %>
+          </div>
+
+            <%= form.hidden_field :first_name, :value => current_user.first_name, :readonly => true %>
+            <%= form.hidden_field :last_name, :value => current_user.last_name, :readonly => true %>
+
+
+            <div class="input-group form-group">
+        	<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fas fa-building"></i></span>
+        	</div>
+            <div class="form-control">
+            <%= form.text_field :company_name, placeholder: "Nazwa firmy" %>
+        	</div>
+          </div>
+
+          <div class="input-group form-group">
+        	<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+        	</div>
+            <div class="form-control">
+            <%= form.text_field :city, placeholder: "Miasto" %>
+        	</div>
+          </div>
+
+          <div class="input-group form-group">
+        	<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fas fa-address-card"></i></span>
+        	</div>
+            <div class="form-control">
+            <%= form.text_field :street, placeholder: "Ulica" %>
+        	</div>
+          </div>
+
+          <div class="input-group form-group">
+        	<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fas fa-phone-square"></i></span>
+        	</div>
+            <div class="form-control">
+            <%= form.text_field :phone, placeholder: "Numer telefonu" %>
+        	</div>
+          </div>
+
+           <div class="input-group form-group">
+        	<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fas fa-star"></i></span>
+        	</div>
+        	<div class="form-control">
+            <%= form.select :specialty_id, Specialty.all.order(:name).collect { |b| [ b.name, b.id ] } %> <br/>
+        	</div>
+          </div>
+
+          <div class="input-group form-group">
+        	<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fas fa-info-circle"></i></span>
+        	</div>
+        	<div class="form-control tekstowy-area">
+            <%= form.text_area :additional_info, placeholder: "Dodatkowe informacje" %>
+        	</div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group form-group">
+        	<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
+        	</div>
+        	<div class="form-control mapkowy-form">
+        		<div class="przycisnik-02">
+        	        <button type="button" id="set_map">Ustaw położenie mapy</button>
+        	    </div>
+        		<div id="map" style="width:500px;height:350px;max-width:100%; max-height:100%;"></div>
+        	</div>
+          </div>
+          <div style="display:none;">
+            <div class="field">
+              <%= form.label :coordx %>
+              <%= form.text_field :coordx %>
+            </div>
+
+            <div class="field">
+              <%= form.label :coordy %>
+              <%= form.text_field :coordy %>
+            </div>
+          </div>
+
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+        </div>
+        </div>
+
+
+
+
+          <div class="actions">
+            <%= form.submit('Aktualizuj dane') %>
+          </div>
+        <% end %>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>

@@ -4,11 +4,11 @@
 		<h1><%= @specialist.company_name %></h1>
 		<table>
 			<tr>
-				<td>Adres</td> 
+				<td>Adres</td>
 				<td><%= @specialist.city %>, <%= @specialist.street %></td>
 			</tr>
 			<tr>
-				<td>Właściciel</td> 
+				<td>Właściciel</td>
 				<td><%= @specialist.first_name %> <%= @specialist.last_name %></td>
 			</tr>
 			<tr>
@@ -23,7 +23,7 @@
 	</div>
   <% if user_signed_in? %>
   <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
-  
+  <%= link_to 'Zmień dane', edit_specialist_path(@specialist.id) %>
   <div id="reviews">
     <% @specialist.reviews.each do |review| %>
     <div class="review">
