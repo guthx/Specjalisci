@@ -574,12 +574,16 @@ h1 {
 .info-special table {
 	font-size: 16px;
 	font-weight: 500;
-	margin-left: 10px;
 	width:100%;
+	margin-bottom: 15px;
 }
 
 .info-special table tr {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-bottom: 1px solid rgba(162, 159, 159, 0.68);
+}
+
+.info-special table td {
+	padding: 5px;
 }
 
 .info-special tr td:first-child {
@@ -704,4 +708,30 @@ h1 {
 	position: absolute;
 	top: 140px;
 	left: 50px;
+}
+
+/***/
+
+#lista li.specialist .first_name {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 20px;
+	padding: 5px 0;
+}
+
+.location i {
+	color: #feaf10;
+	font-size: 21px;
+	padding-top: 3px;
+}
+
+.location {
+	padding: 5px;
+}
+
+.card-recenzja {
+	margin-top: auto;
+	margin-bottom: auto;
+	background-color: rgb(84, 84, 84);
+	border-radius: 0.25em;
 }

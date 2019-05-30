@@ -1,5 +1,5 @@
 <div id="specialistID" style="display:none;"><%= @specialist.id %></div>
-<div id="specialistDetails">
+<div id="specialistDetails" style="background-color: #212529;">
 	<div class="info-special">
 		<h1><%= @specialist.company_name %></h1>
 		<table>
@@ -20,19 +20,22 @@
 				<td><%= @specialist.additional_info %></td>
 			</tr>
 		</table>
-	</div>
   <% if user_signed_in? %>
   <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
-  <%= link_to 'Zmień dane', edit_specialist_path(@specialist.id) %>
+  <div class="przycisnik"><%= link_to 'Zmień dane', edit_specialist_path(@specialist.id) %></div>
+		</div>
   <div id="reviews">
-    <% @specialist.reviews.each do |review| %>
+	<h3 style="margin-bottom: 20px;">Wystawione recenzje</h3>
+    <% @specialist.reviews.order('created_at DESC').each do |review| %>
     <div class="review">
-      <div class="reviewerName"><%= review.user.full_name %></div>
-      <div class="rating">
-        <div class='star-ratings-sprite'>
-          <span style="width: <%= (review.rating/5.0)*100 %>%" class="star-ratings-sprite-rating"></span>
-        </div>
-      </div>
+		<div class="row" style="padding-left: 15px;">
+			  <div class="reviewerName"><%= review.user.full_name %></div>
+			  <div class="rating wystawione">
+				<div class='star-ratings-sprite'>
+				  <span style="width: <%= (review.rating/5.0)*100 %>%" class="star-ratings-sprite-rating"></span>
+				</div>
+			  </div>
+		</div>
       <div class="reviewText"><%= review.text %></div>
     </div>
     <% end %>

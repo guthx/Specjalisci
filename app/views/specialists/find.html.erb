@@ -16,13 +16,22 @@
 				<% Specialist.where(specialty_id: @specialty_id).where(confirmed: true).each do |specialist| %>
 					<li id="<%= specialist.id %>" class="specialist" distance="" coordx="<%=specialist.coordx%>" coordy="<%=specialist.coordy%>" style="display:none;">
 					<a href="/specialists/<%=specialist.id%>/find_details" data-remote="true">
-						<div class="first_name"><%= specialist.full_name %></div>
+						<div class="row" style="padding: 0 15px 10px 15px;">
+							<div class="first_name"> 
+							<%= specialist.company_name %> 
+							</div>
+							<div class="rating" style="padding: 5px;">
+								<div class="star-ratings-sprite"><span style="width: <%= specialist.rating*20 %>%" class="star-ratings-sprite-rating"></span></div>
+							</div>
+						</div>
 						<div class="location">
-							<div class="address">Lokacja: <%= specialist.address %></div>
+							<i class="fas fa-map-marker-alt"></i>
+							<div class="address"><%= specialist.address %></div>
 							<div class="distance"></div>
 						</div>
-						<div class="rating">
-							<div class="star-ratings-sprite"><span style="width: <%= specialist.rating*20 %>%" class="star-ratings-sprite-rating"></span></div>
+						<div class="location">
+							<i class="fas fa-phone"></i>
+							<div class="address"><%= specialist.phone %></div>
 						</div>
 					</a>
 					</li>
