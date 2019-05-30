@@ -27,9 +27,13 @@
       </div>
   </div>
   </div>
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
+  <div class="input-group form-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><i class="fas fa-comment-alt"></i></span>
+	</div>
+	<div class="form-control recenzja-area">
+    <%= form.text_area :text, placeholder: "Treść recenzji" %>
+	</div>
   </div>
   <%= form.hidden_field :specialist_id, :value => @specialistID %>
   <%= form.hidden_field :user_id, :value => @userID %>

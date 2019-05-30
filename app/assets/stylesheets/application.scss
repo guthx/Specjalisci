@@ -444,6 +444,12 @@ h1 {
   padding-top: 20px;
   background: #212529;
   color: white;
+	padding: 20px;
+	text-transform: none;
+}
+
+.notification {
+	display: block;
 }
 
 .unseen {
@@ -648,4 +654,54 @@ h1 {
 	padding: 10px;
 	background-color: #feaf10;
 	border-radius: 0.25rem 0.25rem 0 0;
+}
+
+/* Recenzje */
+
+#reviews {
+	margin: 10px 0;
+	padding: 15px
+}
+
+
+.wystawione{
+	padding: 0 10px;
+}
+
+.review {
+	border-bottom: 1px solid #7b7a7a;
+	padding: 10px;
+}
+
+.reviewText {
+	padding-top: 5px;
+}
+
+.button-trasa {
+	padding: 0 15px;
+}
+
+.szczegoly {
+	font-weight: 500;
+	padding-top: 5px;
+}
+
+.recenzja-area {
+	height: 120px;
+}
+
+.rating-group {
+	padding: 0 0 10px 0;
+}
+
+.zamknij-recenzje{
+	background: transparent;
+	border: none;
+	float: right;
+}
+
+#new-review {
+	position: absolute;
+	top: 140px;
+	left: 50px;
 }
