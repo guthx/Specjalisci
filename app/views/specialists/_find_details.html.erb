@@ -8,8 +8,10 @@
 		<p class="szczegoly"><%= @specialist.additional_info %></p>
 		</div>
 		<div class="col-md-6">
+			<% if user_signed_in? %>
 			<div id="sendMessage" class="przycisnik"><%= link_to 'Wyślij wiadomość', myMessages_path(redirect: 'send', id: @specialist.user.id) %></div>
 			<div id="giveReview" class="przycisnik"><%= link_to 'Wystaw recenzję', new_review_path(specialist_id: @specialist.id, user_id: current_user.id), :remote => true %></div>
+			<% end %>
 		</div>
 		</div>
 	</div>
@@ -28,7 +30,7 @@
 	</div>
   <% if user_signed_in? %>
   <div id="currentUserID" style="display: none;"><%= current_user.id %></div>
-
+	  <% end %>
   <div id="reviews">
 	<h3 style="margin-bottom: 20px;">Wystawione recenzje</h3>
     <% @specialist.reviews.each do |review| %>
@@ -45,6 +47,5 @@
     </div>
     <% end %>
   </div>
-  <% end %>
 	<div id="new-review"></div>
 </div>
