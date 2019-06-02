@@ -5,8 +5,13 @@
 		<div class="row">
 			<div class="col-md-4"><% if !current_user.specialists.exists? %>
 			<div class="notice">Nie posiadasz zarejestrowanych działalności</div>
+			</div>
+			<div class="col-md-8">
+				<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
+				<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj cudzą działalność', new_specialist_path(:foreign => true) %></div>
+			</div>
 			<% else %>
-			<h2>Moje działalności</h2>
+			<div class="notice"><h2>Moje działalności</h2></div>
 			</div>
 			<div class="col-md-8">
 				<div class="dodawanie-specjalisty special-right"><%= link_to 'Dodaj własną działalność', new_specialist_path %></div>
