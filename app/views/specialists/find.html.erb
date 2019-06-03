@@ -12,17 +12,27 @@
 				<div class="col-md-7"><input id="distanceSlider" type="range" name="distance" min="1" max="50" value="5"></div>
 				<div class="col-md-4"><div id="maxDistance">5 km</div></div>
 			</div>
+			<div class="row">
+					<select id="sortSelect">
+						<option value="distance">Dystans</option>
+						<option value="rating">Ocena</option>
+					</select>
+			</div>
 			<ul id="lista">
 				<% Specialist.where(specialty_id: @specialty_id).where(confirmed: true).each do |specialist| %>
-					<li id="<%= specialist.id %>" class="specialist" distance="" coordx="<%=specialist.coordx%>" coordy="<%=specialist.coordy%>" style="display:none;">
+					<li id="<%= specialist.id %>" class="specialist" distance="" coordx="<%=specialist.coordx%>" coordy="<%=specialist.coordy%>" rating="<%=specialist.rating%>" style="display:none;">
 					<a href="/specialists/<%=specialist.id%>/find_details" data-remote="true">
 						<div class="row" style="padding: 0 15px 10px 15px;">
-							<div class="first_name"> 
-							<%= specialist.company_name %> 
+							<div class="first_name">
+							<%= specialist.company_name %>
 							</div>
 							<div class="rating" style="padding: 5px;">
 								<div class="star-ratings-sprite"><span style="width: <%= specialist.rating*20 %>%" class="star-ratings-sprite-rating"></span></div>
 							</div>
+						</div>
+						<div class="location">
+							<i class="fas fa-user"></i>
+							<div class="address"><%= specialist.user.full_name %></div>
 						</div>
 						<div class="location">
 							<i class="fas fa-map-marker-alt"></i>

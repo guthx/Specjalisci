@@ -61,6 +61,11 @@ $(document).ready(function(){
        }
      }
    });
+
+   $(document).on('change', '#sortSelect', function(){
+      var s = $('#sortSelect').val();
+      sort_list(s);
+   });
 });
 
 function filter_list(){
@@ -142,5 +147,29 @@ function set_distances(){
     }
     i = i+1;
   });
+  sort_list('distance');
+}
 
+function sort_list(sortBy){
+  var tab = $.makeArray($('#lista').children('li'));
+
+  tab.sort(function(a, b){
+    var el1 = $(a).attr(sortBy);
+    var el2 = $(b).attr(sortBy);
+
+    if (sortBy == 'distance') {
+      if (el1 < el2) return -1;
+      if (el1 > el2) return 1;
+      return 0;
+    } else if (sortBy == 'rating') {
+      if (el1 < el2) return 1;
+      if (el1 > el2) return -1;
+      return 0;
+    }
+    return 0;
+  });
+  $('#lista').empty();
+  $.each(tab, function(){
+        $('#lista').append(this);
+  });
 }

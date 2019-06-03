@@ -8,6 +8,5 @@ class Message < ApplicationRecord
     else
       self.message
     end
-
   end
 end
