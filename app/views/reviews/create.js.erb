@@ -1,4 +1,4 @@
 $('#new-review').html('');
-$('#reviews').prepend('<div class="review"><div class="reviewerName"><%= @review.user.full_name%></div>'+
-'<div class="rating"><div class="star-ratings-sprite"><span class="star-ratings-sprite-rating" style="width: <%=(@review.rating/5.0)*100%>%"</span></div></div>' +
+$('#reviews').prepend('<div class="review"><div class="row" style="padding-left: 15px;"><div class="reviewerName"><%= @review.user.full_name%></div>'+
+'<div class="rating wystawione"><div class="star-ratings-sprite"><span class="star-ratings-sprite-rating" style="width: <%=(@review.rating/5.0)*100%>%"</span></div></div></div>' +
 '<div class="reviewText"><%=@review.text%></div></div>');
